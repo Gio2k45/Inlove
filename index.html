@@ -176,6 +176,28 @@ html,body{cursor:url("https://1.bp.blogspot.com/-qbWo9mPKO2Y/YL9utYdQBdI/AAAAAAA
 <time>00:00:00</time>
 </div>
 </div>
+<footer><div id="countdown"></div></footer>
+    <script>
+    // Ngày kỷ niệm của bạn
+    var anniversaryDate = new Date("2032-05-09");
+
+    // Hàm tính số ngày còn lại
+    function countdown() {
+      var currentDate = new Date();
+      var timeDifference = anniversaryDate.getTime() - currentDate.getTime();
+      var daysRemaining = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+
+      // Hiển thị số ngày còn lại trên trang web
+      var countdownElement = document.getElementById("countdown");
+      countdownElement.innerHTML = "Đếm ngược còn " + daysRemaining + " ngày";
+
+      // Cập nhật lại số ngày còn lại sau mỗi giây
+      setTimeout(countdown, 1000);
+    }
+
+    // Gọi hàm countdown để bắt đầu đếm ngược
+    countdown();
+  </script>
 <div id='info'>
 <div class='one'>
 <img class='avt' src='https://i.imgur.com/9wtsIhA.jpg'/>
