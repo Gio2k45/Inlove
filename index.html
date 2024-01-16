@@ -19,11 +19,7 @@ html,body{cursor:url("https://1.bp.blogspot.com/-qbWo9mPKO2Y/YL9utYdQBdI/AAAAAAA
 
 </style>
   <!-- Thư viện SweetAlert2 -->
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css">
-<!-- Múi giờ -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-        
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <style>.--savior-overlay-transform-reset {
     transform: none !important;
   }
@@ -176,24 +172,14 @@ html,body{cursor:url("https://1.bp.blogspot.com/-qbWo9mPKO2Y/YL9utYdQBdI/AAAAAAA
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover; */
-/* } */
-
+}
   </style>
     </head>
    
     <body>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-      Swal.fire({
-        title: 'Welcome to my Inlove💞!',
-        text: 'Cảm ơn bạn đã ghé qua Inlove của bọn mình!!',
-        icon: 'success',
-        confirmButtonText: 'Đóng',
-      });
-    });
-  </script>
+
         <div id='wrapper'>
-<h1>𝑫𝒂𝒚𝒔 𝑳𝒐𝒗𝒆</h1>
+<h1>Days Love</h1>
 <div id='clock-box'>
 <div id='clock'>
 <date>525 DAYS</date>
@@ -206,18 +192,17 @@ html,body{cursor:url("https://1.bp.blogspot.com/-qbWo9mPKO2Y/YL9utYdQBdI/AAAAAAA
 const botToken = '6716872901:AAH7p3UcynOqmf1cy8sAL8D2iHceSEgJtCM';
 
 // Ngày kỷ niệm (định dạng: yyyy-mm-dd)
-  const anniversaryDate = new Date("2032-05-09");
+const anniversaryDate = new Date("2032-05-09");
 
-  // Hàm tính số ngày còn lại và hiển thị
-  function countdown() {
-    const currentDate = new Date();
-    const timeDifference = anniversaryDate.getTime() - currentDate.getTime();
-    const daysRemaining = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+// Hàm tính số ngày còn lại
+function countdown() {
+  const currentDate = new Date();
+  const timeDifference = anniversaryDate.getTime() - currentDate.getTime();
+  const daysRemaining = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
 
-    // Hiển thị số ngày còn lại trên trang web
-    const countdownElement = document.getElementById("countdown");
-    countdownElement.innerHTML = "Countdown: " + daysRemaining + " days";
-  }
+  // Hiển thị số ngày còn lại trên trang web
+  const countdownElement = document.getElementById("countdown");
+  countdownElement.innerHTML = "Đếm ngược còn " + daysRemaining + " ngày";
 
   // Gửi thông điệp đến Telegram
   if (daysRemaining === 0) {
@@ -227,7 +212,7 @@ const botToken = '6716872901:AAH7p3UcynOqmf1cy8sAL8D2iHceSEgJtCM';
   }
 
   // Cập nhật lại số ngày còn lại sau mỗi ngày (86400000 milliseconds = 1 ngày)
-  setInterval(countdown, 300000);
+  setTimeout(countdown, 86400000);
 }
 
 // Hàm gửi thông điệp đến bot Telegram
@@ -249,6 +234,7 @@ function sendMessageToTelegram(message) {
     .catch(error => {
       console.error('Lỗi khi gửi thông điệp:', error);
     });
+
 }
 
 // Gọi hàm countdown để bắt đầu đếm ngược
@@ -257,14 +243,14 @@ countdown();
 <div id='info'>
 <div class='one'>
 <img class='avt' src='https://i.imgur.com/rKzYwkT.jpg'/>
-<p>𝙉𝙜𝙪𝙮𝙚𝙣 𝙑𝙖𝙣 𝙋𝙝𝙤𝙣𝙜</p>
+<p>Nguyễn Văn Phong</p>
 </div>
 <div id='heart'>
                         &#10084;<anni>...</anni>
 </div>
 <div class='two'>
 <img class='avt' src='https://i.imgur.com/ekdBzCC.jpg'/>
-<p>𝘿𝙤 𝙏𝙝𝙞 𝙔𝙚𝙣 𝙉𝙝𝙞</p>
+<p>Đỗ Thị Yến Nhi</p>
 </div>
 </div>
 <div id='music'>
