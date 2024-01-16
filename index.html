@@ -202,7 +202,7 @@ function countdown() {
 
   // Hiển thị số ngày còn lại trên trang web
   const countdownElement = document.getElementById("countdown");
-  countdownElement.innerHTML = "𝐂𝐨𝐮𝐧𝐭𝐝𝐨𝐰𝐧 " + daysRemaining + " 𝐝𝐚𝐲𝐬";
+  countdownElement.innerHTML = "Countdown " + daysRemaining + " days";
 
   // Gửi thông điệp đến Telegram
   if (daysRemaining === 0) {
@@ -234,8 +234,9 @@ function sendMessageToTelegram(message) {
         title: 'Welcome to my Inlove💞!',
         text: 'Cảm ơn bạn đã ghé qua Inlove của bọn mình!!',
         icon: 'success',
-        timer: 3000, // Thời gian hiển thị thông báo (3 giây)
-        showConfirmButton: false // Không hiển thị nút xác nhận
+//        timer: 3000, // Thời gian hiển thị thông báo (3 giây)
+//        showConfirmButton: false // Không hiển thị nút xác nhận
+        confirmButtonText: 'Đóng',
       });
     })
     .catch(error => {
