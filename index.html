@@ -205,21 +205,20 @@ html,body{cursor:url("https://1.bp.blogspot.com/-qbWo9mPKO2Y/YL9utYdQBdI/AAAAAAA
     // Token của bot Telegram
 const botToken = '6716872901:AAH7p3UcynOqmf1cy8sAL8D2iHceSEgJtCM';
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-<script>
-  // Ngày kỷ niệm (định dạng: yyyy-mm-dd)
-  const anniversaryDate = moment.tz("2032-05-09", "Asia/Ho_Chi_Minh");
+// Ngày kỷ niệm (định dạng: yyyy-mm-dd)
+  const anniversaryDate = new Date("2032-05-09");
 
   // Hàm tính số ngày còn lại và hiển thị
   function countdown() {
-    const currentDate = moment();
-    const daysRemaining = anniversaryDate.diff(currentDate, 'days');
+    const currentDate = new Date();
+    const timeDifference = anniversaryDate.getTime() - currentDate.getTime();
+    const daysRemaining = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
 
     // Hiển thị số ngày còn lại trên trang web
     const countdownElement = document.getElementById("countdown");
     countdownElement.innerHTML = "Countdown: " + daysRemaining + " days";
   }
-
+  setInterval(countdown, 300000);
   // Gửi thông điệp đến Telegram
   if (daysRemaining === 0) {
     sendMessageToTelegram("Hôm nay là ngày kỷ niệm! Chúc mừng!!");
@@ -228,7 +227,7 @@ const botToken = '6716872901:AAH7p3UcynOqmf1cy8sAL8D2iHceSEgJtCM';
   }
 
   // Cập nhật lại số ngày còn lại sau mỗi ngày (86400000 milliseconds = 1 ngày)
-  setInterval(countdown, 300000);
+
 }
 
 // Hàm gửi thông điệp đến bot Telegram
