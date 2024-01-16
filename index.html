@@ -188,6 +188,7 @@ html,body{cursor:url("https://1.bp.blogspot.com/-qbWo9mPKO2Y/YL9utYdQBdI/AAAAAAA
       var currentDate = new Date();
       var timeDifference = anniversaryDate.getTime() - currentDate.getTime();
       var daysRemaining = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+        return daysRemaining;
 
       // Hiển thị số ngày còn lại trên trang web
       var countdownElement = document.getElementById("countdown");
