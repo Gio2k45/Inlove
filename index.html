@@ -164,11 +164,51 @@ html,body{cursor:url("https://1.bp.blogspot.com/-qbWo9mPKO2Y/YL9utYdQBdI/AAAAAAA
       opacity: 1;
     }
   }
+/* CSS cho cửa sổ modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
   </style>
     </head>
    
     <body>
-<div id="notification"></div>
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p id="modal-message"></p>
+  </div>
+</div>
         <div id='wrapper'>
 <h1>Days Love</h1>
 <div id='clock-box'>
@@ -220,14 +260,19 @@ function sendMessageToTelegram(message) {
   })
     .then(response => response.json())
     .then(data => {
-      // Thay đổi nội dung của thẻ thông báo
-      const notificationElement = document.getElementById("notification");
-      notificationElement.textContent = 'Thông điệp đã được gửi thành công';
+      // Thay đổi nội dung của cửa sổ modal
+      const modalMessageElement = document.getElementById("modal-message");
+      modalMessageElement.textContent = 'Thông điệp đã được gửi thành công';
 
-      // Tắt thông báo sau 3 giây
-      setTimeout(() => {
-        notificationElement.style.display = 'none';
-      }, 3000);
+      // Hiển thị cửa sổ modal
+      const modalElement = document.getElementById("modal");
+      modalElement.style.display = "block";
+
+      // Đóng cửa sổ modal khi người dùng nhấp vào nút đóng
+      const closeElement = document.getElementsByClassName("close")[0];
+      closeElement.onclick = function() {
+        modalElement.style.display = "none";
+      };
     })
     .catch(error => {
       console.error('Lỗi khi gửi thông điệp:', error);
