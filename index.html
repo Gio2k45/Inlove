@@ -228,7 +228,13 @@ function sendMessageToTelegram(message) {
     }),
   })
     .then(response => response.json())
-
+    .then(data => {
+      console.log('Thông điệp đã được gửi thành công:', data);
+    })
+    .catch(error => {
+      console.error('Lỗi khi gửi thông điệp:', error);
+    });
+}
 
 // Gọi hàm countdown để bắt đầu đếm ngược
 countdown();
