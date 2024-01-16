@@ -178,25 +178,56 @@ html,body{cursor:url("https://1.bp.blogspot.com/-qbWo9mPKO2Y/YL9utYdQBdI/AAAAAAA
 </div>
 <footer><div id="countdown"></div></footer>
   <script>
-    // Ngày kỷ niệm của bạn
-    var anniversaryDate = new Date("2032-05-09");
+    // Token của bot Telegram
+const botToken = '6794603563:AAGOCCHYAXbs6FqujVSVdLYmPHuz8kJ3zyc';
 
-    // Hàm tính số ngày còn lại
-    function countdown() {
-      var currentDate = new Date();
-      var timeDifference = anniversaryDate.getTime() - currentDate.getTime();
-      var daysRemaining = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+// Ngày kỷ niệm (định dạng: yyyy-mm-dd)
+const anniversaryDate = new Date("2032-05-09");
 
-      // Hiển thị số ngày còn lại trên trang web
-      var countdownElement = document.getElementById("countdown");
-      countdownElement.innerHTML = "Đếm ngược còn " + daysRemaining + " ngày";
+// Hàm tính số ngày còn lại
+function countdown() {
+  const currentDate = new Date();
+  const timeDifference = anniversaryDate.getTime() - currentDate.getTime();
+  const daysRemaining = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
 
-      // Cập nhật lại số ngày còn lại sau mỗi giây
-      setTimeout(countdown, 1000);
-    }
+  // Hiển thị số ngày còn lại trên trang web
+  const countdownElement = document.getElementById("countdown");
+  countdownElement.innerHTML = "Đếm ngược còn " + daysRemaining + " ngày";
 
-    // Gọi hàm countdown để bắt đầu đếm ngược
-    countdown();
+  // Gửi thông điệp đến Telegram
+  if (daysRemaining === 0) {
+    sendMessageToTelegram("Hôm nay là ngày kỷ niệm! Chúc mừng!!");
+  } else {
+    sendMessageToTelegram("Còn " + daysRemaining + " ngày nữa đến ngày kỷ niệm!");
+  }
+
+  // Cập nhật lại số ngày còn lại sau mỗi ngày (86400000 milliseconds = 1 ngày)
+  setTimeout(countdown, 86400000);
+}
+
+// Hàm gửi thông điệp đến bot Telegram
+function sendMessageToTelegram(message) {
+  fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      chat_id: '-1002061706055',
+      text: message,
+    }),
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Thông điệp đã được gửi thành công:', data);
+    })
+    .catch(error => {
+      console.error('Lỗi khi gửi thông điệp:', error);
+    });
+}
+
+// Gọi hàm countdown để bắt đầu đếm ngược
+countdown();
   </script>
 <div id='info'>
 <div class='one'>
