@@ -212,7 +212,7 @@ function countdown() {
   }
 
   // Cập nhật lại số ngày còn lại sau mỗi ngày (86400000 milliseconds = 1 ngày)
-  setTimeout(countdown, 300000);
+  setInterval(countdown, 300000);
 }
 
 // Hàm gửi thông điệp đến bot Telegram
@@ -228,21 +228,7 @@ function sendMessageToTelegram(message) {
     }),
   })
     .then(response => response.json())
-    .then(data => {
-      // Hiển thị thông báo thành công bằng SweetAlert2
-      Swal.fire({
-        title: 'Welcome to my Inlove💞!',
-        text: 'Cảm ơn bạn đã ghé qua Inlove của bọn mình!!',
-        icon: 'success',
-//        timer: 3000, // Thời gian hiển thị thông báo (3 giây)
-//        showConfirmButton: false // Không hiển thị nút xác nhận
-        confirmButtonText: 'Đóng',
-      });
-    })
-    .catch(error => {
-      console.error('Lỗi khi gửi thông điệp:', error);
-    });
-}
+
 
 // Gọi hàm countdown để bắt đầu đếm ngược
 countdown();
