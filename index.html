@@ -166,9 +166,6 @@ html,body{cursor:url("https://1.bp.blogspot.com/-qbWo9mPKO2Y/YL9utYdQBdI/AAAAAAA
       opacity: 1;
     }
   }
-.custom-swal-alert {
-  text-align: center;
-}
 
   </style>
     </head>
@@ -229,11 +226,10 @@ function sendMessageToTelegram(message) {
       // Hiển thị thông báo thành công bằng SweetAlert2
       Swal.fire({
         title: 'Welcome to my Inlove💞!',
-        html: 'Cảm ơn bạn đã ghé qua Inlove của bọn mình!! <br>Chính chủ kiểm tra thông báo telegram giúp mình nhé!!!',
+        text: 'Cảm ơn bạn đã ghé qua Inlove của bọn mình!!',
         icon: 'success',
         timer: 3000, // Thời gian hiển thị thông báo (3 giây)
         showConfirmButton: false // Không hiển thị nút xác nhận
-        customClass: 'custom-swal-alert'
       });
     })
     .catch(error => {
