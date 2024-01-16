@@ -178,6 +178,8 @@ html,body{cursor:url("https://1.bp.blogspot.com/-qbWo9mPKO2Y/YL9utYdQBdI/AAAAAAA
 </div>
 <footer><div id="countdown"></div></footer>
     <script>
+    // Token của bot Telegram
+    const botToken = '6794603563:AAGOCCHYAXbs6FqujVSVdLYmPHuz8kJ3zyc';
     // Ngày kỷ niệm của bạn
     var anniversaryDate = new Date("2032-05-09");
 
@@ -197,6 +199,34 @@ html,body{cursor:url("https://1.bp.blogspot.com/-qbWo9mPKO2Y/YL9utYdQBdI/AAAAAAA
 
     // Gọi hàm countdown để bắt đầu đếm ngược
     countdown();
+        
+    // Hàm gửi thông điệp đến bot Telegram
+    function sendMessageToTelegram() {
+      const daysRemaining = getDaysRemaining();
+      const message = `Còn ${daysRemaining} ngày nữa đến ngày kỷ niệm! 🎉`;
+    
+      // Gửi yêu cầu HTTP POST đến Telegram Bot API
+      fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          chat_id: '-1002061706055',
+          text: message,
+        }),
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Thông điệp đã được gửi thành công:', data);
+        })
+        .catch(error => {
+          console.error('Lỗi khi gửi thông điệp:', error);
+        });
+    }
+    
+    // Gọi hàm để gửi thông điệp khi cần
+    sendMessageToTelegram();
   </script>
 <div id='info'>
 <div class='one'>
