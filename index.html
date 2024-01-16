@@ -21,6 +21,9 @@ html,body{cursor:url("https://1.bp.blogspot.com/-qbWo9mPKO2Y/YL9utYdQBdI/AAAAAAA
   <!-- Thư viện SweetAlert2 -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css">
+<!-- Múi giờ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+        
 <style>.--savior-overlay-transform-reset {
     transform: none !important;
   }
@@ -173,7 +176,8 @@ html,body{cursor:url("https://1.bp.blogspot.com/-qbWo9mPKO2Y/YL9utYdQBdI/AAAAAAA
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover; */
-}
+/* } */
+
   </style>
     </head>
    
@@ -201,18 +205,20 @@ html,body{cursor:url("https://1.bp.blogspot.com/-qbWo9mPKO2Y/YL9utYdQBdI/AAAAAAA
     // Token của bot Telegram
 const botToken = '6716872901:AAH7p3UcynOqmf1cy8sAL8D2iHceSEgJtCM';
 
-// Ngày kỷ niệm (định dạng: yyyy-mm-dd)
-const anniversaryDate = new Date("2032-05-09");
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script>
+  // Ngày kỷ niệm (định dạng: yyyy-mm-dd)
+  const anniversaryDate = moment.tz("2032-05-09", "Asia/Ho_Chi_Minh");
 
-// Hàm tính số ngày còn lại
-function countdown() {
-  const currentDate = new Date();
-  const timeDifference = anniversaryDate.getTime() - currentDate.getTime();
-  const daysRemaining = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+  // Hàm tính số ngày còn lại và hiển thị
+  function countdown() {
+    const currentDate = moment();
+    const daysRemaining = anniversaryDate.diff(currentDate, 'days');
 
-  // Hiển thị số ngày còn lại trên trang web
-  const countdownElement = document.getElementById("countdown");
-  countdownElement.innerHTML = "Countdown " + daysRemaining + " days";
+    // Hiển thị số ngày còn lại trên trang web
+    const countdownElement = document.getElementById("countdown");
+    countdownElement.innerHTML = "Countdown: " + daysRemaining + " days";
+  }
 
   // Gửi thông điệp đến Telegram
   if (daysRemaining === 0) {
