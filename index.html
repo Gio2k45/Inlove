@@ -194,15 +194,23 @@ function countdown() {
   const countdownElement = document.getElementById("countdown");
   countdownElement.innerHTML = "Đếm ngược còn " + daysRemaining + " ngày";
 
-  // Gửi thông điệp đến Telegram
+  // Kiểm tra xem đã đến 3 giây chưa
+  const threeSecondsInMilliseconds = 3 * 1000; // 3 giây
+  const timePassed = currentDate.getTime() - anniversaryDate.getTime();
+  const isThreeSecondsPassed = timePassed >= threeSecondsInMilliseconds;
+
+  // Gửi thông điệp đến Telegram nếu đã đến 3 giây
+  if (isThreeSecondsPassed) {
+    sendMessageToTelegram("Đã qua 3 giây, còn " + daysRemaining + " ngày nữa đến ngày kỷ niệm!");
+  }
+
+  // Kiểm tra xem đã đến ngày kỷ niệm chưa
   if (daysRemaining === 0) {
     sendMessageToTelegram("Hôm nay là ngày kỷ niệm! Chúc mừng!!");
-  } else {
-    sendMessageToTelegram("Còn " + daysRemaining + " ngày nữa đến ngày kỷ niệm!");
   }
 
   // Cập nhật lại số ngày còn lại sau mỗi ngày (86400000 milliseconds = 1 ngày)
-  setTimeout(countdown, 86400000);
+  setTimeout(countdown, 1000);
 }
 
 // Hàm gửi thông điệp đến bot Telegram
