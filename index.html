@@ -275,7 +275,7 @@ countdown();
             // Thay đổi ngày bắt đầu đếm tại đây - cấu trúc => YYYY/MM/DD
             const yourDate = new Date("2022-01-02T00:00:00"),
             // Thay đổi bài hát tại đây
-            music = ['ido', 'noinaycoanh', 'nguoiamphu'];
+            music = ['anh_thanh_nien', 'co_gai_m52', 'cung_nhau_dong_bang', 'hoa_co_lau', 'khuat_loi', 'la_anh', 'roi_toi_luon', 'tuong_quan', 'xin_ma_ruoc_dau'];
             document.addEventListener('DOMContentLoaded', function() {
                 var rootTime = document.querySelector("time");
                 document.querySelector("anni").textContent = `${(yourDate.getDate()>9)?yourDate.getDate():"0"+yourDate.getDate()}-${(yourDate.getMonth()>8)?(yourDate.getMonth()+1):"0"+(yourDate.getMonth()+1)}-${yourDate.getFullYear()}`;
@@ -292,7 +292,7 @@ countdown();
                     olock()
                 }, 1000);
                 // Thay đổi link ramdom bài hát tại đây
-                document.querySelector("audio").setAttribute("src", `https://cdn.leanhduc.pro.vn/music/${music[Math.floor(Math.random()*music.length)]}.mp3`);
+                document.querySelector("audio").setAttribute("src", `https://gio2k45.github.io/Inlove/${music[Math.floor(Math.random()*music.length)]}.mp3`);
                 document.getElementsByTagName("body")[0].insertAdjacentHTML(
                     "beforeend",
                     "<div id='mask'></div>"
