@@ -266,16 +266,19 @@ countdown();
 <p>𝑫𝒐 𝑻𝒉𝒊 𝒀𝒆𝒏 𝑵𝒉𝒊</p>
 </div>
 </div>
-<div id='music'>
+<!-- <div id='music'>
 <audio autoplay='' controls='' loop=''>Your browser does not support the audio element.</audio>
-</div>
+</div> -->
+ <audio id="music" loop>
+    <source src="" type="audio/mpeg">
+</audio>           
 <footer>𝐓𝐡𝐚𝐧𝐤 𝐲𝐨𝐮 𝐟𝐨𝐫 𝐜𝐨𝐦𝐢𝐧𝐠 𝐭𝐨 𝐦𝐞</footer>
 </div>
 <script type='text/javascript'>//<![CDATA[
             // Thay đổi ngày bắt đầu đếm tại đây - cấu trúc => YYYY/MM/DD
             const yourDate = new Date("2022-01-02T00:00:00"),
             // Thay đổi bài hát tại đây
-            music = ['anh_thanh_nien', 'co_gai_m52', 'cung_nhau_dong_bang', 'hoa_co_lau', 'khuat_loi', 'la_anh', 'roi_toi_luon', 'tuong_quan', 'xin_ma_ruoc_dau', 'banh_mi_khong'];
+            // music = ['anh_thanh_nien', 'co_gai_m52', 'cung_nhau_dong_bang', 'hoa_co_lau', 'khuat_loi', 'la_anh', 'roi_toi_luon', 'tuong_quan', 'xin_ma_ruoc_dau', 'banh_mi_khong'];
             document.addEventListener('DOMContentLoaded', function() {
                 var rootTime = document.querySelector("time");
                 document.querySelector("anni").textContent = `${(yourDate.getDate()>9)?yourDate.getDate():"0"+yourDate.getDate()}-${(yourDate.getMonth()>8)?(yourDate.getMonth()+1):"0"+(yourDate.getMonth()+1)}-${yourDate.getFullYear()}`;
@@ -292,16 +295,21 @@ countdown();
                     olock()
                 }, 1000);
                 // Thay đổi link ramdom bài hát tại đây
-                document.querySelector("audio").setAttribute("src", `https://gio2k45.github.io/Inlove/${music[Math.floor(Math.random()*music.length)]}.mp3`);
-                document.getElementsByTagName("body")[0].insertAdjacentHTML(
-                    "beforeend",
-                    "<div id='mask'></div>"
-                );
+                // document.querySelector("audio").setAttribute("src", `https://gio2k45.github.io/Inlove/${music[Math.floor(Math.random()*music.length)]}.mp3`);
+                // document.getElementsByTagName("body")[0].insertAdjacentHTML(
+                //     "beforeend",
+                //     "<div id='mask'></div>"
+                // );
             }, false);
         //]]>
+</script>
+<script>
+    var songs = ['anh_thanh_nien', 'co_gai_m52', 'cung_nhau_dong_bang', 'hoa_co_lau', 'khuat_loi', 'la_anh', 'roi_toi_luon', 'tuong_quan', 'xin_ma_ruoc_dau', 'banh_mi_khong'];
 
-        window.addEventListener('click', function () {
+    window.addEventListener('click', function () {
         var music = document.getElementById('music');
+        var randomIndex = Math.floor(Math.random() * songs.length);
+        music.src = songs[randomIndex];
         music.play();
     });
 </script>
